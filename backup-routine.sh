@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SSH=$1
-DOCKER_SERVER=$2
+DOCKER_SERVER="$(sudo docker ps | grep "minecraft" | awk '{print $1}')"
 
 # Print message to server that backup is starting
 sudo docker exec "$DOCKER_SERVER" rcon-cli 'tellraw @a [{"text":"[","color":"white"},{"text":"Server","color":"gold"},{"text":"] ","color":"white"},{"text":"Backup started","color":"green"}]'
